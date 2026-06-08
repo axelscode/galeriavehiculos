@@ -28,7 +28,6 @@
             padding: 20px;
         }
 
-        /* Header con controles */
         .header {
             background: rgba(255,255,255,0.95);
             border-radius: 15px;
@@ -92,25 +91,20 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
-        .view-btn {
-            background: #764ba2;
-        }
-
-        /* Grid de vehículos */
         .vehiculos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
 
-        /* Tarjeta de vehículo */
         .vehiculo-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         body.dark-mode .vehiculo-card {
@@ -127,7 +121,6 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 15px;
-            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -147,76 +140,200 @@
             font-size: 0.85rem;
         }
 
-        .toggle-icon {
-            transition: transform 0.3s;
-        }
-
-        .vehiculo-header.active .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Grid de fotos */
-        .fotos-grid {
-            display: grid;
-            gap: 10px;
-            padding: 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-        }
-
-        .fotos-grid.grid-view {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        }
-
-        .fotos-grid.list-view {
-            grid-template-columns: 1fr;
-        }
-
-        .fotos-grid.active {
-            max-height: 100000px;
-            transition: max-height 0.5s ease-in;
-        }
-
-        .foto-item {
+        .preview-container {
             position: relative;
+            height: 250px;
             overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
             background: #f0f0f0;
         }
 
-        .fotos-grid.grid-view .foto-item {
-            aspect-ratio: 1;
+        .preview-imagen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
 
-        .fotos-grid.list-view .foto-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
+        .preview-imagen.active {
+            opacity: 1;
+            z-index: 2;
         }
 
-        .fotos-grid.list-view .foto-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .foto-item img {
+        .preview-imagen img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
-        .foto-item:hover img {
+        .preview-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 15px 15px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .ver-galeria-btn {
+            background: rgba(255,255,255,0.95);
+            color: #667eea;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .ver-galeria-btn:hover {
+            background: white;
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Overlay de botones en imágenes */
-        .foto-overlay {
+        /* Modal de galería */
+        .galeria-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .galeria-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .galeria-contenedor {
+            width: 90%;
+            max-width: 1300px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease;
+        }
+
+        body.dark-mode .galeria-contenedor {
+            background: #2d2d3a;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .galeria-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .galeria-header h2 {
+            font-size: 1.4rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .galeria-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .cerrar-galeria {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .cerrar-galeria:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.1);
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            padding: 25px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .galeria-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .galeria-grid::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .galeria-grid::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+
+        .thumbnail-item {
+            position: relative;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .thumbnail-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .thumbnail-overlay {
             position: absolute;
             top: 5px;
             right: 5px;
@@ -226,11 +343,11 @@
             transition: opacity 0.3s;
         }
 
-        .foto-item:hover .foto-overlay {
+        .thumbnail-item:hover .thumbnail-overlay {
             opacity: 1;
         }
 
-        .foto-btn {
+        .thumb-btn {
             background: rgba(0,0,0,0.7);
             color: white;
             border: none;
@@ -238,61 +355,79 @@
             width: 30px;
             height: 30px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             transition: all 0.2s;
         }
 
-        .foto-btn:hover {
+        .thumb-btn:hover {
             transform: scale(1.1);
+            background: rgba(0,0,0,0.9);
         }
 
-        .favorito-btn.active {
+        .favorito-thumb.active {
             color: gold;
         }
 
-        .info-imagen {
+        .thumb-info {
             position: absolute;
             bottom: 5px;
             left: 5px;
             background: rgba(0,0,0,0.6);
             color: white;
-            font-size: 11px;
+            font-size: 10px;
             padding: 2px 6px;
-            border-radius: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
         }
 
-        /* Modal mejorado */
-        .modal {
+        .thumb-etiquetas {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            max-width: 70%;
+        }
+
+        /* Modal de foto */
+        .foto-modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 3000;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.98);
         }
 
-        .modal.active {
+        .foto-modal.active {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .modal-content {
+        .foto-modal-content {
             max-width: 90%;
             max-height: 90%;
             position: relative;
         }
 
-        .modal img {
+        .foto-modal img {
             max-width: 100%;
             max-height: 80vh;
             object-fit: contain;
             border-radius: 10px;
         }
 
-        .modal-controls {
+        .foto-modal-controls {
             position: absolute;
             top: 50%;
             width: 100%;
@@ -302,7 +437,7 @@
             pointer-events: none;
         }
 
-        .nav-btn {
+        .foto-nav-btn {
             background: rgba(255,255,255,0.3);
             color: white;
             border: none;
@@ -315,12 +450,12 @@
             transition: all 0.3s;
         }
 
-        .nav-btn:hover {
+        .foto-nav-btn:hover {
             background: rgba(255,255,255,0.5);
             transform: scale(1.1);
         }
 
-        .modal-info {
+        .foto-modal-info {
             position: absolute;
             bottom: 20px;
             left: 0;
@@ -333,17 +468,22 @@
             border-radius: 10px;
         }
 
-        .modal-close {
+        .foto-modal-close {
             position: absolute;
             top: 20px;
             right: 40px;
             color: white;
             font-size: 40px;
             cursor: pointer;
-            z-index: 1002;
+            z-index: 3002;
+            transition: all 0.3s;
         }
 
-        /* Responsive */
+        .foto-modal-close:hover {
+            transform: scale(1.2);
+            color: #ff4444;
+        }
+
         @media (max-width: 768px) {
             .vehiculos-grid {
                 grid-template-columns: 1fr;
@@ -353,10 +493,25 @@
                 flex-direction: column;
             }
             
-            .nav-btn {
+            .galeria-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .galeria-contenedor {
+                width: 95%;
+                height: 90vh;
+            }
+            
+            .foto-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 25px;
+            }
+            
+            .preview-container {
+                height: 200px;
             }
         }
     </style>
@@ -373,7 +528,6 @@
                 <div class="filter-buttons">
                     <button class="btn" onclick="mostrarFavoritos()">⭐ Favoritos</button>
                     <button class="btn" onclick="mostrarTodo()">📋 Todos</button>
-                    <button class="btn view-btn" onclick="cambiarVista()">🖼️ Cambiar vista</button>
                     <button class="btn" onclick="toggleDarkMode()">🌙 Modo oscuro</button>
                 </div>
             </div>
@@ -382,38 +536,49 @@
         <div class="vehiculos-grid" id="vehiculosGrid"></div>
     </div>
 
-    <!-- Modal para foto grande con navegación -->
-    <div id="modal" class="modal" onclick="cerrarModal()">
-        <div class="modal-controls">
-            <button class="nav-btn" onclick="event.stopPropagation(); navegarImagen(-1)">❮</button>
-            <button class="nav-btn" onclick="event.stopPropagation(); navegarImagen(1)">❯</button>
+    <!-- Modal de Galería -->
+    <div id="galeriaModal" class="galeria-modal">
+        <div class="galeria-contenedor">
+            <div class="galeria-header">
+                <h2 id="galeriaTitulo">📁 Vehículo</h2>
+                <div class="galeria-stats">
+                    <span id="galeriaStats">📸 0 fotos</span>
+                </div>
+                <button class="cerrar-galeria" onclick="cerrarGaleriaModal()">✕</button>
+            </div>
+            <div class="galeria-grid" id="galeriaGrid"></div>
         </div>
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <img id="modalImg" src="" alt="">
-            <div class="modal-info" id="modalInfo"></div>
+    </div>
+
+    <!-- Modal de Foto Grande -->
+    <div id="fotoModal" class="foto-modal" onclick="cerrarFotoModal()">
+        <div class="foto-modal-controls">
+            <button class="foto-nav-btn" onclick="event.stopPropagation(); navegarFoto(-1)">❮</button>
+            <button class="foto-nav-btn" onclick="event.stopPropagation(); navegarFoto(1)">❯</button>
         </div>
-        <span class="modal-close" onclick="cerrarModal()">&times;</span>
+        <div class="foto-modal-content" onclick="event.stopPropagation()">
+            <img id="fotoModalImg" src="" alt="">
+            <div class="foto-modal-info" id="fotoModalInfo"></div>
+        </div>
+        <span class="foto-modal-close" onclick="cerrarFotoModal()">&times;</span>
     </div>
 
     <script>
-        // Datos de la aplicación
         let vehiculosData = {{ vehiculos | tojson }};
         let favoritosData = {{ favoritos | tojson }};
         let etiquetasData = {{ etiquetas | tojson }};
-        let vistaActual = localStorage.getItem('galeriaVista') || 'grid';
         let modoOscuro = localStorage.getItem('modoOscuro') === 'true';
         let imagenesActuales = [];
         let indiceActual = 0;
-        let vehiculoActual = '';
+        let vehiculoActual = null;
+        let hoverIntervals = {};
 
-        // Inicializar
         function init() {
             if (modoOscuro) document.body.classList.add('dark-mode');
             actualizarGaleria();
             actualizarTotalFotos();
         }
 
-        // Actualizar galería
         function actualizarGaleria() {
             const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
             const mostrarSoloFavoritos = window.mostrarSoloFavoritos || false;
@@ -431,59 +596,197 @@
             }
             
             const grid = document.getElementById('vehiculosGrid');
-            grid.innerHTML = filtered.map(vehiculo => `
-                <div class="vehiculo-card" data-nombre="${vehiculo.nombre}">
-                    <div class="vehiculo-header" onclick="toggleVehiculo(this)">
-                        <h2>📁 ${vehiculo.nombre}</h2>
-                        <div class="vehiculo-stats">
-                            <span>📸 ${vehiculo.total_imagenes} fotos</span>
-                            <span>⭐ ${vehiculo.imagenes.filter(img => favoritosData[`${vehiculo.nombre}/${img.nombre}`]).length}</span>
+            grid.innerHTML = filtered.map(vehiculo => {
+                const favoritosCount = vehiculo.imagenes.filter(img => favoritosData[`${vehiculo.nombre}/${img.nombre}`]).length;
+                
+                // Generar hasta 5 imágenes preview (o todas si son menos)
+                const previewImages = vehiculo.imagenes.slice(0, 5);
+                
+                return `
+                    <div class="vehiculo-card" data-nombre="${vehiculo.nombre}" data-vehiculo-id="${vehiculo.nombre.replace(/[^a-zA-Z0-9]/g, '-')}">
+                        <div class="vehiculo-header">
+                            <h2>📁 ${vehiculo.nombre}</h2>
+                            <div class="vehiculo-stats">
+                                <span>📸 ${vehiculo.total_imagenes}</span>
+                                ${favoritosCount > 0 ? `<span>⭐ ${favoritosCount}</span>` : ''}
+                            </div>
                         </div>
-                        <span class="toggle-icon">▼</span>
-                    </div>
-                    <div class="fotos-grid ${vistaActual}-view">
-                        ${vehiculo.imagenes.map(img => {
-                            const rutaCompleta = `${vehiculo.nombre}/${img.nombre}`;
-                            const esFavorito = favoritosData[rutaCompleta];
-                            const etiquetas = etiquetasData[rutaCompleta] || [];
-                            const tamañoFormateado = img.tamaño < 1024*1024 ? 
-                                (img.tamaño/1024).toFixed(1) + ' KB' : 
-                                (img.tamaño/(1024*1024)).toFixed(1) + ' MB';
-                            return `
-                                <div class="foto-item" data-ruta="${rutaCompleta}" data-vehiculo="${vehiculo.nombre}" data-imagen="${img.nombre}">
-                                    <img src="/imagen/${rutaCompleta}" alt="${img.nombre}" loading="lazy" 
-                                         onclick="abrirModalDesdeElemento(this, '${vehiculo.nombre}', '${img.nombre}')">
-                                    <div class="foto-overlay">
-                                        <button class="foto-btn favorito-btn ${esFavorito ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorito('${rutaCompleta}', this)">⭐</button>
-                                        <button class="foto-btn" onclick="event.stopPropagation(); mostrarInfo('${vehiculo.nombre}', '${img.nombre}', ${img.tamaño}, '${img.fecha_modificacion}')">ℹ️</button>
-                                        <button class="foto-btn" onclick="event.stopPropagation(); agregarEtiqueta('${rutaCompleta}')">🏷️</button>
-                                        <button class="foto-btn" onclick="event.stopPropagation(); eliminarImagen('${rutaCompleta}', this)" style="color:#ff4444">🗑️</button>
+                        <div class="preview-container" id="preview-${vehiculo.nombre.replace(/[^a-zA-Z0-9]/g, '-')}">
+                            ${previewImages.map((img, idx) => {
+                                const rutaCompleta = `${vehiculo.nombre}/${img.nombre}`;
+                                return `
+                                    <div class="preview-imagen ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+                                        <img src="/imagen/${rutaCompleta}" alt="${vehiculo.nombre}">
                                     </div>
-                                    ${vistaActual === 'list' ? `<div class="info-imagen" style="position: relative; background: rgba(0,0,0,0.8); display: inline-block;">${img.nombre}</div>` : ''}
-                                    ${etiquetas.length ? `<div class="info-imagen" style="top:5px; left:5px; right:auto; bottom:auto">🏷️ ${etiquetas.join(', ')}</div>` : ''}
-                                </div>
-                            `;
-                        }).join('')}
+                                `;
+                            }).join('')}
+                            <div class="preview-overlay">
+                                <button class="ver-galeria-btn" onclick="event.stopPropagation(); abrirGaleriaModal('${vehiculo.nombre}')">
+                                    🔍 Ver galería completa (${vehiculo.total_imagenes} fotos)
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
+            
+            // Inicializar los efectos hover para cada tarjeta
+            filtered.forEach(vehiculo => {
+                const cardId = `preview-${vehiculo.nombre.replace(/[^a-zA-Z0-9]/g, '-')}`;
+                const container = document.getElementById(cardId);
+                if (container && vehiculo.imagenes.length > 1) {
+                    initHoverEffect(container, vehiculo.nombre);
+                }
+            });
         }
 
-        // Actualizar total de fotos
+        function initHoverEffect(container, vehiculoNombre) {
+            const previews = container.querySelectorAll('.preview-imagen');
+            if (previews.length <= 1) return;
+            
+            let currentIndex = 0;
+            let hoverTimeout = null;
+            let intervalId = null;
+            
+            const startSlideshow = () => {
+                if (intervalId) clearInterval(intervalId);
+                intervalId = setInterval(() => {
+                    // Cambiar a la siguiente imagen aleatoriamente
+                    let newIndex;
+                    do {
+                        newIndex = Math.floor(Math.random() * previews.length);
+                    } while (newIndex === currentIndex && previews.length > 1);
+                    
+                    // Cambiar imagen activa
+                    previews[currentIndex].classList.remove('active');
+                    previews[newIndex].classList.add('active');
+                    currentIndex = newIndex;
+                }, 800); // Cambiar cada 800ms
+            };
+            
+            const stopSlideshow = () => {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+                // Reset a la primera imagen
+                previews[currentIndex].classList.remove('active');
+                previews[0].classList.add('active');
+                currentIndex = 0;
+            };
+            
+            container.addEventListener('mouseenter', () => {
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                startSlideshow();
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(() => {
+                    stopSlideshow();
+                }, 100);
+            });
+            
+            // Guardar interval para cleanup
+            hoverIntervals[vehiculoNombre] = {
+                stop: stopSlideshow,
+                container: container
+            };
+        }
+
         function actualizarTotalFotos() {
             const total = vehiculosData.reduce((sum, v) => sum + v.imagenes.length, 0);
             document.getElementById('totalFotos').innerHTML = `📸 Total: ${total} fotos`;
         }
 
-        // Toggle vehículo
-        function toggleVehiculo(header) {
-            header.classList.toggle('active');
-            const fotosGrid = header.parentElement.querySelector('.fotos-grid');
-            fotosGrid.classList.toggle('active');
+        function abrirGaleriaModal(nombreVehiculo) {
+            const vehiculo = vehiculosData.find(v => v.nombre === nombreVehiculo);
+            if (!vehiculo) return;
+            
+            vehiculoActual = vehiculo;
+            
+            document.getElementById('galeriaTitulo').innerHTML = `📁 ${vehiculo.nombre}`;
+            document.getElementById('galeriaStats').innerHTML = `📸 ${vehiculo.total_imagenes} fotos | ⭐ ${vehiculo.imagenes.filter(img => favoritosData[`${vehiculo.nombre}/${img.nombre}`]).length}`;
+            
+            const grid = document.getElementById('galeriaGrid');
+            grid.innerHTML = vehiculo.imagenes.map(img => {
+                const rutaCompleta = `${vehiculo.nombre}/${img.nombre}`;
+                const esFavorito = favoritosData[rutaCompleta];
+                const etiquetas = etiquetasData[rutaCompleta] || [];
+                const tamañoFormateado = img.tamaño < 1024*1024 ? 
+                    (img.tamaño/1024).toFixed(0) + ' KB' : 
+                    (img.tamaño/(1024*1024)).toFixed(1) + ' MB';
+                
+                return `
+                    <div class="thumbnail-item" data-ruta="${rutaCompleta}" data-vehiculo="${vehiculo.nombre}" data-imagen="${img.nombre}">
+                        <img src="/imagen/${rutaCompleta}" alt="${img.nombre}" loading="lazy" 
+                             onclick="abrirFotoModal('${vehiculo.nombre}', '${img.nombre}')">
+                        <div class="thumbnail-overlay">
+                            <button class="thumb-btn favorito-thumb ${esFavorito ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavoritoDesdeGaleria('${rutaCompleta}', this)">⭐</button>
+                            <button class="thumb-btn" onclick="event.stopPropagation(); mostrarInfo('${vehiculo.nombre}', '${img.nombre}', '${tamañoFormateado}', '${img.fecha_modificacion}')">ℹ️</button>
+                            <button class="thumb-btn" onclick="event.stopPropagation(); agregarEtiquetaDesdeGaleria('${rutaCompleta}')">🏷️</button>
+                            <button class="thumb-btn" onclick="event.stopPropagation(); eliminarImagen('${rutaCompleta}', this)" style="color:#ff4444">🗑️</button>
+                        </div>
+                        ${etiquetas.length ? `<div class="thumb-etiquetas">🏷️ ${etiquetas.slice(0, 2).join(', ')}${etiquetas.length > 2 ? '+' : ''}</div>` : ''}
+                        <div class="thumb-info">${img.nombre}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('galeriaModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Toggle favorito
-        async function toggleFavorito(ruta, btn) {
+        function cerrarGaleriaModal() {
+            document.getElementById('galeriaModal').classList.remove('active');
+            document.body.style.overflow = '';
+            vehiculoActual = null;
+        }
+
+        function abrirFotoModal(vehiculo, imagen) {
+            if (!vehiculoActual || vehiculoActual.nombre !== vehiculo) {
+                vehiculoActual = vehiculosData.find(v => v.nombre === vehiculo);
+            }
+            
+            imagenesActuales = vehiculoActual.imagenes.map(img => ({
+                ruta: `${vehiculoActual.nombre}/${img.nombre}`,
+                vehiculo: vehiculoActual.nombre,
+                imagen: img.nombre
+            }));
+            
+            indiceActual = imagenesActuales.findIndex(i => i.imagen === imagen);
+            
+            const modal = document.getElementById('fotoModal');
+            modal.classList.add('active');
+            actualizarFotoModal();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function actualizarFotoModal() {
+            const modalImg = document.getElementById('fotoModalImg');
+            const modalInfo = document.getElementById('fotoModalInfo');
+            const actual = imagenesActuales[indiceActual];
+            
+            modalImg.src = `/imagen/${actual.ruta}`;
+            modalInfo.innerHTML = `
+                📷 ${actual.imagen} | 
+                📁 ${actual.vehiculo} | 
+                📸 ${indiceActual + 1} de ${imagenesActuales.length}
+                <button class="btn" style="margin-left:10px" onclick="toggleFavoritoDesdeFoto()">⭐</button>
+            `;
+        }
+
+        function navegarFoto(direccion) {
+            indiceActual = (indiceActual + direccion + imagenesActuales.length) % imagenesActuales.length;
+            actualizarFotoModal();
+        }
+
+        function cerrarFotoModal() {
+            document.getElementById('fotoModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        async function toggleFavoritoDesdeGaleria(ruta, btn) {
             const response = await fetch('/api/favorito', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -498,102 +801,15 @@
                     btn.classList.remove('active');
                     delete favoritosData[ruta];
                 }
+                if (vehiculoActual) {
+                    const favoritosCount = vehiculoActual.imagenes.filter(img => favoritosData[`${vehiculoActual.nombre}/${img.nombre}`]).length;
+                    document.getElementById('galeriaStats').innerHTML = `📸 ${vehiculoActual.total_imagenes} fotos | ⭐ ${favoritosCount}`;
+                }
                 actualizarGaleria();
             }
         }
 
-        // Mostrar info
-        function mostrarInfo(vehiculo, imagen, tamaño, fecha) {
-            const tamañoFormateado = tamaño < 1024*1024 ? 
-                (tamaño/1024).toFixed(1) + ' KB' : 
-                (tamaño/(1024*1024)).toFixed(1) + ' MB';
-            alert(`📷 ${imagen}\n📁 ${vehiculo}\n📏 ${tamañoFormateado}\n📅 ${fecha}`);
-        }
-
-        // Agregar etiqueta
-        async function agregarEtiqueta(ruta) {
-            const etiqueta = prompt('Ingrese una etiqueta para esta foto (ej: motor, interior, lateral):');
-            if (etiqueta && etiqueta.trim()) {
-                const response = await fetch('/api/etiqueta', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ruta: ruta, etiqueta: etiqueta.trim()})
-                });
-                const data = await response.json();
-                if (data.success) {
-                    etiquetasData[ruta] = data.etiquetas;
-                    actualizarGaleria();
-                }
-            }
-        }
-
-        // Eliminar imagen
-        async function eliminarImagen(ruta, elemento) {
-            if (confirm('¿Eliminar esta imagen permanentemente?')) {
-                const response = await fetch('/api/eliminar', {
-                    method: 'DELETE',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ruta: ruta})
-                });
-                const data = await response.json();
-                if (data.success) {
-                    // Actualizar datos locales
-                    const [vehiculo, imagen] = ruta.split('/');
-                    const vehiculoObj = vehiculosData.find(v => v.nombre === vehiculo);
-                    if (vehiculoObj) {
-                        vehiculoObj.imagenes = vehiculoObj.imagenes.filter(img => img.nombre !== imagen);
-                        vehiculoObj.total_imagenes = vehiculoObj.imagenes.length;
-                    }
-                    delete favoritosData[ruta];
-                    delete etiquetasData[ruta];
-                    actualizarGaleria();
-                    actualizarTotalFotos();
-                } else {
-                    alert('Error al eliminar');
-                }
-            }
-        }
-
-        // Abrir modal con navegación
-        function abrirModalDesdeElemento(imgElement, vehiculo, imagen) {
-            // Obtener todas las imágenes del mismo vehículo
-            const fotosGrid = imgElement.closest('.fotos-grid');
-            const fotosItems = fotosGrid.querySelectorAll('.foto-item');
-            
-            imagenesActuales = Array.from(fotosItems).map(item => ({
-                ruta: item.dataset.ruta,
-                vehiculo: item.dataset.vehiculo,
-                imagen: item.dataset.imagen
-            }));
-            
-            indiceActual = imagenesActuales.findIndex(i => i.imagen === imagen);
-            vehiculoActual = vehiculo;
-            
-            const modal = document.getElementById('modal');
-            modal.classList.add('active');
-            actualizarModalImagen();
-        }
-
-        function actualizarModalImagen() {
-            const modalImg = document.getElementById('modalImg');
-            const modalInfo = document.getElementById('modalInfo');
-            const actual = imagenesActuales[indiceActual];
-            
-            modalImg.src = `/imagen/${actual.ruta}`;
-            modalInfo.innerHTML = `
-                📷 ${actual.imagen} | 
-                📁 ${actual.vehiculo} | 
-                📸 ${indiceActual + 1} de ${imagenesActuales.length}
-                <button class="btn" style="margin-left:10px" onclick="toggleFavoritoModal()">⭐</button>
-            `;
-        }
-
-        function navegarImagen(direccion) {
-            indiceActual = (indiceActual + direccion + imagenesActuales.length) % imagenesActuales.length;
-            actualizarModalImagen();
-        }
-
-        async function toggleFavoritoModal() {
+        async function toggleFavoritoDesdeFoto() {
             const actual = imagenesActuales[indiceActual];
             const ruta = actual.ruta;
             const response = await fetch('/api/favorito', {
@@ -608,16 +824,82 @@
                 } else {
                     delete favoritosData[ruta];
                 }
+                if (vehiculoActual) {
+                    const favoritosCount = vehiculoActual.imagenes.filter(img => favoritosData[`${vehiculoActual.nombre}/${img.nombre}`]).length;
+                    document.getElementById('galeriaStats').innerHTML = `📸 ${vehiculoActual.total_imagenes} fotos | ⭐ ${favoritosCount}`;
+                }
                 actualizarGaleria();
-                actualizarModalImagen();
+                actualizarFotoModal();
+                
+                if (document.getElementById('galeriaModal').classList.contains('active')) {
+                    const btn = document.querySelector(`.thumbnail-item[data-ruta="${ruta}"] .favorito-thumb`);
+                    if (btn) {
+                        if (data.es_favorito) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    }
+                }
             }
         }
 
-        function cerrarModal() {
-            document.getElementById('modal').classList.remove('active');
+        async function agregarEtiquetaDesdeGaleria(ruta) {
+            const etiqueta = prompt('Ingrese una etiqueta para esta foto (ej: motor, interior, lateral):');
+            if (etiqueta && etiqueta.trim()) {
+                const response = await fetch('/api/etiqueta', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ruta: ruta, etiqueta: etiqueta.trim()})
+                });
+                const data = await response.json();
+                if (data.success) {
+                    etiquetasData[ruta] = data.etiquetas;
+                    actualizarGaleria();
+                    if (document.getElementById('galeriaModal').classList.contains('active') && vehiculoActual) {
+                        abrirGaleriaModal(vehiculoActual.nombre);
+                    }
+                }
+            }
         }
 
-        // Filtros
+        function mostrarInfo(vehiculo, imagen, tamaño, fecha) {
+            alert(`📷 ${imagen}\n📁 ${vehiculo}\n📏 ${tamaño}\n📅 ${fecha}`);
+        }
+
+        async function eliminarImagen(ruta, elemento) {
+            if (confirm('¿Eliminar esta imagen permanentemente?')) {
+                const response = await fetch('/api/eliminar', {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ruta: ruta})
+                });
+                const data = await response.json();
+                if (data.success) {
+                    const [vehiculo, imagen] = ruta.split('/');
+                    const vehiculoObj = vehiculosData.find(v => v.nombre === vehiculo);
+                    if (vehiculoObj) {
+                        vehiculoObj.imagenes = vehiculoObj.imagenes.filter(img => img.nombre !== imagen);
+                        vehiculoObj.total_imagenes = vehiculoObj.imagenes.length;
+                    }
+                    delete favoritosData[ruta];
+                    delete etiquetasData[ruta];
+                    actualizarGaleria();
+                    actualizarTotalFotos();
+                    
+                    if (document.getElementById('galeriaModal').classList.contains('active') && vehiculoActual && vehiculoActual.nombre === vehiculo) {
+                        if (vehiculoActual.imagenes.length > 0) {
+                            abrirGaleriaModal(vehiculo);
+                        } else {
+                            cerrarGaleriaModal();
+                        }
+                    }
+                } else {
+                    alert('Error al eliminar');
+                }
+            }
+        }
+
         function mostrarFavoritos() {
             window.mostrarSoloFavoritos = true;
             actualizarGaleria();
@@ -629,19 +911,12 @@
             actualizarGaleria();
         }
 
-        function cambiarVista() {
-            vistaActual = vistaActual === 'grid' ? 'list' : 'grid';
-            localStorage.setItem('galeriaVista', vistaActual);
-            actualizarGaleria();
-        }
-
         function toggleDarkMode() {
             modoOscuro = !modoOscuro;
             localStorage.setItem('modoOscuro', modoOscuro);
             document.body.classList.toggle('dark-mode', modoOscuro);
         }
 
-        // Búsqueda en tiempo real
         document.addEventListener('DOMContentLoaded', () => {
             init();
             const searchInput = document.getElementById('searchInput');
@@ -653,11 +928,13 @@
             }
         });
 
-        // Cerrar modal con ESC
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') cerrarModal();
-            if (e.key === 'ArrowLeft' && document.getElementById('modal').classList.contains('active')) navegarImagen(-1);
-            if (e.key === 'ArrowRight' && document.getElementById('modal').classList.contains('active')) navegarImagen(1);
+            if (e.key === 'Escape') {
+                cerrarFotoModal();
+                cerrarGaleriaModal();
+            }
+            if (e.key === 'ArrowLeft' && document.getElementById('fotoModal').classList.contains('active')) navegarFoto(-1);
+            if (e.key === 'ArrowRight' && document.getElementById('fotoModal').classList.contains('active')) navegarFoto(1);
         });
     </script>
 </body>
