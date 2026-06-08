@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<<<<<<< HEAD
+    <title>Galería de Vehículos - Estilo Pinterest</title>
+=======
+    <title>Galería de Vehículos - Mi Colección</title>
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+<<<<<<< HEAD
+        /* Header fijo en la parte superior */
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 0 0 15px 15px;
+            padding: 15px 20px;
+            margin-bottom: 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+=======
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header con controles */
+        .header {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        body.dark-mode .header {
+            background: rgba(30,30,40,0.95);
+            color: white;
+        }
+
+<<<<<<< HEAD
+        /* Contenedor principal con padding para compensar el header fijo */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 100px 20px 20px 20px;
+        }
+
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        .header h1 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+<<<<<<< HEAD
+            font-size: 1.5rem;
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+<<<<<<< HEAD
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            background: #667eea;
+            color: white;
+<<<<<<< HEAD
+            font-weight: 500;
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+<<<<<<< HEAD
+        /* ESTILO PINTEREST/MASONRY */
+        .vehiculos-grid {
+            column-count: 1;
+            column-gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .vehiculos-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .vehiculos-grid {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .vehiculos-grid {
+                column-count: 4;
+            }
+=======
+        .view-btn {
+            background: #764ba2;
+        }
+
+        /* Grid de vehículos */
+        .vehiculos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        /* Tarjeta de vehículo */
+        .vehiculo-card {
+<<<<<<< HEAD
+            break-inside: avoid;
+            margin-bottom: 25px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+=======
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .vehiculo-card {
+            background: #2d2d3a;
+            color: white;
+        }
+
+        .vehiculo-card:hover {
+            transform: translateY(-5px);
+<<<<<<< HEAD
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+=======
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .vehiculo-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+<<<<<<< HEAD
+            padding: 12px 15px;
+=======
+            padding: 15px;
+            cursor: pointer;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+<<<<<<< HEAD
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .vehiculo-header h2 {
+            font-size: 1rem;
+            margin: 0;
+            word-break: break-word;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+=======
+            gap: 10px;
+        }
+
+        .vehiculo-header h2 {
+            font-size: 1.1rem;
+            margin: 0;
+            word-break: break-word;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .vehiculo-stats {
+            display: flex;
+<<<<<<< HEAD
+            gap: 12px;
+            font-size: 0.75rem;
+        }
+
+        .toggle-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .vehiculo-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        /* IMPORTANTE: El grid de fotos - CORREGIDO */
+        .fotos-grid {
+            display: none;
+            padding: 15px;
+        }
+
+        .fotos-grid.active {
+            display: block;
+        }
+
+        /* Grid interno para las fotos (Masonry) */
+        .fotos-masonry {
+            column-count: 2;
+            column-gap: 12px;
+        }
+
+        .foto-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .foto-item {
+            background: #3a3a4a;
+        }
+
+        .foto-item:hover {
+            transform: scale(1.02);
+=======
+            gap: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Grid de fotos */
+        .fotos-grid {
+            display: grid;
+            gap: 10px;
+            padding: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .fotos-grid.grid-view {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .fotos-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .fotos-grid.active {
+            max-height: 10000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .foto-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #f0f0f0;
+        }
+
+        .fotos-grid.grid-view .foto-item {
+            aspect-ratio: 1;
+        }
+
+        .fotos-grid.list-view .foto-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        .fotos-grid.list-view .foto-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .foto-item img {
+            width: 100%;
+<<<<<<< HEAD
+            height: auto;
+            display: block;
+=======
+            height: 100%;
+            object-fit: cover;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            transition: transform 0.3s ease;
+        }
+
+        .foto-item:hover img {
+            transform: scale(1.05);
+        }
+
+<<<<<<< HEAD
+        .foto-overlay {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 2;
+=======
+        /* Overlay de botones en imágenes */
+        .foto-overlay {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .foto-item:hover .foto-overlay {
+            opacity: 1;
+        }
+
+        .foto-btn {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+<<<<<<< HEAD
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            backdrop-filter: blur(4px);
+=======
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .foto-btn:hover {
+            transform: scale(1.1);
+<<<<<<< HEAD
+            background: rgba(0,0,0,0.9);
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        .favorito-btn.active {
+            color: gold;
+        }
+
+        .info-imagen {
+            position: absolute;
+<<<<<<< HEAD
+            bottom: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .etiquetas-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            max-width: 70%;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+=======
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* Modal mejorado */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .modal-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: none;
+            font-size: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.5);
+            transform: scale(1.1);
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            margin: 0 20px;
+            border-radius: 10px;
+<<<<<<< HEAD
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 90px 10px 10px 10px;
+            }
+            
+            .header {
+                padding: 10px 15px;
+=======
+        }
+
+        .etiquetas-input {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .vehiculos-grid {
+                grid-template-columns: 1fr;
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+<<<<<<< HEAD
+            .search-box {
+                width: 100%;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 25px;
+            }
+<<<<<<< HEAD
+            
+            .fotos-masonry {
+                column-count: 2;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .vehiculo-card {
+            animation: fadeIn 0.5s ease-out;
+=======
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                🚗 Galería de Vehículos 🚙
+                <span id="totalFotos"></span>
+            </h1>
+            <div class="controls">
+                <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar vehículo...">
+                <div class="filter-buttons">
+                    <button class="btn" onclick="mostrarFavoritos()">⭐ Favoritos</button>
+                    <button class="btn" onclick="mostrarTodo()">📋 Todos</button>
+<<<<<<< HEAD
+=======
+                    <button class="btn view-btn" onclick="cambiarVista()">🖼️ Cambiar vista</button>
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+                    <button class="btn" onclick="toggleDarkMode()">🌙 Modo oscuro</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="vehiculos-grid" id="vehiculosGrid"></div>
+    </div>
+
+<<<<<<< HEAD
+    <!-- Modal -->
+    <div id="modal" class="modal">
+=======
+    <!-- Modal para foto grande con navegación -->
+    <div id="modal" class="modal" onclick="cerrarModal()">
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        <div class="modal-controls">
+            <button class="nav-btn" onclick="event.stopPropagation(); navegarImagen(-1)">❮</button>
+            <button class="nav-btn" onclick="event.stopPropagation(); navegarImagen(1)">❯</button>
+        </div>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="">
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+<<<<<<< HEAD
+        <span class="modal-close" style="position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer; z-index:1002;" onclick="cerrarModalConScroll()">&times;</span>
+=======
+        <span class="modal-close" style="position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer;" onclick="cerrarModal()">&times;</span>
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+    </div>
+
+    <script>
+        // Datos de la aplicación
+        let vehiculosData = {{ vehiculos | tojson }};
+        let favoritosData = {{ favoritos | tojson }};
+        let etiquetasData = {{ etiquetas | tojson }};
+<<<<<<< HEAD
+=======
+        let vistaActual = localStorage.getItem('galeriaVista') || 'grid';
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        let modoOscuro = localStorage.getItem('modoOscuro') === 'true';
+        let imagenesActuales = [];
+        let indiceActual = 0;
+        let vehiculoActual = '';
+
+        // Inicializar
+        function init() {
+            if (modoOscuro) document.body.classList.add('dark-mode');
+            actualizarGaleria();
+            actualizarTotalFotos();
+        }
+
+        // Actualizar galería
+        function actualizarGaleria() {
+            const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const mostrarSoloFavoritos = window.mostrarSoloFavoritos || false;
+            
+            let filtered = vehiculosData;
+            
+            if (mostrarSoloFavoritos) {
+                filtered = vehiculosData.filter(v => 
+                    v.imagenes.some(img => favoritosData[`${v.nombre}/${img.nombre}`])
+                );
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(v => v.nombre.toLowerCase().includes(searchTerm));
+            }
+            
+            const grid = document.getElementById('vehiculosGrid');
+<<<<<<< HEAD
+            grid.innerHTML = filtered.map(vehiculo => {
+                const favoritosCount = vehiculo.imagenes.filter(img => favoritosData[`${vehiculo.nombre}/${img.nombre}`]).length;
+                return `
+=======
+            grid.innerHTML = filtered.map(vehiculo => `
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+                <div class="vehiculo-card" data-nombre="${vehiculo.nombre}">
+                    <div class="vehiculo-header" onclick="toggleVehiculo(this)">
+                        <h2>📁 ${vehiculo.nombre}</h2>
+                        <div class="vehiculo-stats">
+<<<<<<< HEAD
+                            <span>📸 ${vehiculo.total_imagenes}</span>
+                            ${favoritosCount > 0 ? `<span>⭐ ${favoritosCount}</span>` : ''}
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="fotos-grid">
+                        <div class="fotos-masonry">
+                            ${vehiculo.imagenes.map(img => {
+                                const rutaCompleta = `${vehiculo.nombre}/${img.nombre}`;
+                                const esFavorito = favoritosData[rutaCompleta];
+                                const etiquetas = etiquetasData[rutaCompleta] || [];
+                                const tamañoFormateado = img.tamaño < 1024*1024 ? 
+                                    (img.tamaño/1024).toFixed(0) + ' KB' : 
+                                    (img.tamaño/(1024*1024)).toFixed(1) + ' MB';
+                                return `
+                                    <div class="foto-item" data-ruta="${rutaCompleta}" data-vehiculo="${vehiculo.nombre}" data-imagen="${img.nombre}">
+                                        <img src="/imagen/${rutaCompleta}" alt="${img.nombre}" loading="lazy" 
+                                             onclick="abrirModalDesdeElemento(this, '${vehiculo.nombre}', '${img.nombre}')">
+                                        <div class="foto-overlay">
+                                            <button class="foto-btn favorito-btn ${esFavorito ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorito('${rutaCompleta}', this)">⭐</button>
+                                            <button class="foto-btn" onclick="event.stopPropagation(); mostrarInfo('${vehiculo.nombre}', '${img.nombre}', '${tamañoFormateado}', '${img.fecha_modificacion}')">ℹ️</button>
+                                            <button class="foto-btn" onclick="event.stopPropagation(); agregarEtiqueta('${rutaCompleta}')">🏷️</button>
+                                            <button class="foto-btn" onclick="event.stopPropagation(); eliminarImagen('${rutaCompleta}', this)" style="color:#ff4444">🗑️</button>
+                                        </div>
+                                        ${etiquetas.length ? `<div class="etiquetas-badge">🏷️ ${etiquetas.slice(0, 2).join(', ')}${etiquetas.length > 2 ? '+' : ''}</div>` : ''}
+                                        <div class="info-imagen">${img.nombre}</div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+=======
+                            <span>📸 ${vehiculo.total_imagenes} fotos</span>
+                            <span>⭐ ${vehiculo.imagenes.filter(img => favoritosData[`${vehiculo.nombre}/${img.nombre}`]).length}</span>
+                        </div>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="fotos-grid ${vistaActual}-view">
+                        ${vehiculo.imagenes.map(img => {
+                            const rutaCompleta = `${vehiculo.nombre}/${img.nombre}`;
+                            const esFavorito = favoritosData[rutaCompleta];
+                            const etiquetas = etiquetasData[rutaCompleta] || [];
+                            return `
+                                <div class="foto-item" data-ruta="${rutaCompleta}" data-vehiculo="${vehiculo.nombre}" data-imagen="${img.nombre}">
+                                    <img src="/imagen/${rutaCompleta}" alt="${img.nombre}" loading="lazy" 
+                                         onclick="abrirModalDesdeElemento(this, '${vehiculo.nombre}', '${img.nombre}')">
+                                    <div class="foto-overlay">
+                                        <button class="foto-btn favorito-btn ${esFavorito ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorito('${rutaCompleta}', this)">⭐</button>
+                                        <button class="foto-btn" onclick="event.stopPropagation(); mostrarInfo('${vehiculo.nombre}', '${img.nombre}', '${img.tamaño}', '${img.fecha_modificacion}')">ℹ️</button>
+                                        <button class="foto-btn" onclick="event.stopPropagation(); agregarEtiqueta('${rutaCompleta}')">🏷️</button>
+                                        <button class="foto-btn" onclick="event.stopPropagation(); eliminarImagen('${rutaCompleta}', this)" style="color:#ff4444">🗑️</button>
+                                    </div>
+                                    ${vistaActual === 'list' ? `<div class="info-imagen">${img.nombre}</div>` : ''}
+                                    ${etiquetas.length ? `<div class="info-imagen" style="top:5px; left:5px; right:auto; bottom:auto">🏷️ ${etiquetas.join(', ')}</div>` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `).join('');
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        // Actualizar total de fotos
+        function actualizarTotalFotos() {
+            const total = vehiculosData.reduce((sum, v) => sum + v.imagenes.length, 0);
+            document.getElementById('totalFotos').innerHTML = `📸 Total: ${total} fotos`;
+        }
+
+<<<<<<< HEAD
+        // Toggle vehículo - CORREGIDO
+        function toggleVehiculo(header) {
+            const cardActual = header.parentElement;
+            const gridActual = cardActual.querySelector('.fotos-grid');
+            
+            // Alternar clases
+            header.classList.toggle('active');
+            gridActual.classList.toggle('active');
+            
+            // Si se está abriendo, hacer scroll suave hasta él
+            if (gridActual.classList.contains('active')) {
+                setTimeout(() => {
+                    const headerAltura = document.querySelector('.header').offsetHeight;
+                    const cardRect = cardActual.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset + cardRect.top - headerAltura - 20;
+                    
+                    window.scrollTo({
+                        top: scrollTop,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+=======
+        // Toggle vehículo
+        function toggleVehiculo(header) {
+            header.classList.toggle('active');
+            const fotosGrid = header.parentElement.querySelector('.fotos-grid');
+            fotosGrid.classList.toggle('active');
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        // Toggle favorito
+        async function toggleFavorito(ruta, btn) {
+            const response = await fetch('/api/favorito', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ruta: ruta})
+            });
+            const data = await response.json();
+            if (data.success) {
+                if (data.es_favorito) {
+                    btn.classList.add('active');
+                    favoritosData[ruta] = true;
+                } else {
+                    btn.classList.remove('active');
+                    delete favoritosData[ruta];
+                }
+                actualizarGaleria();
+            }
+        }
+
+        // Mostrar info
+        function mostrarInfo(vehiculo, imagen, tamaño, fecha) {
+<<<<<<< HEAD
+            alert(`📷 ${imagen}\n📁 ${vehiculo}\n📏 ${tamaño}\n📅 ${fecha}`);
+=======
+            const tamañoFormateado = tamaño < 1024*1024 ? 
+                (tamaño/1024).toFixed(1) + ' KB' : 
+                (tamaño/(1024*1024)).toFixed(1) + ' MB';
+            alert(`📷 ${imagen}\n📁 ${vehiculo}\n📏 ${tamañoFormateado}\n📅 ${fecha}`);
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        // Agregar etiqueta
+        async function agregarEtiqueta(ruta) {
+            const etiqueta = prompt('Ingrese una etiqueta para esta foto (ej: motor, interior, lateral):');
+<<<<<<< HEAD
+            if (etiqueta && etiqueta.trim()) {
+                const response = await fetch('/api/etiqueta', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ruta: ruta, etiqueta: etiqueta.trim()})
+=======
+            if (etiqueta) {
+                const response = await fetch('/api/etiqueta', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ruta: ruta, etiqueta: etiqueta})
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+                });
+                const data = await response.json();
+                if (data.success) {
+                    etiquetasData[ruta] = data.etiquetas;
+                    actualizarGaleria();
+                }
+            }
+        }
+
+        // Eliminar imagen
+        async function eliminarImagen(ruta, elemento) {
+            if (confirm('¿Eliminar esta imagen permanentemente?')) {
+                const response = await fetch('/api/eliminar', {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ruta: ruta})
+                });
+                const data = await response.json();
+                if (data.success) {
+<<<<<<< HEAD
+=======
+                    // Actualizar datos locales
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+                    const [vehiculo, imagen] = ruta.split('/');
+                    const vehiculoObj = vehiculosData.find(v => v.nombre === vehiculo);
+                    if (vehiculoObj) {
+                        vehiculoObj.imagenes = vehiculoObj.imagenes.filter(img => img.nombre !== imagen);
+                        vehiculoObj.total_imagenes = vehiculoObj.imagenes.length;
+                    }
+                    delete favoritosData[ruta];
+                    delete etiquetasData[ruta];
+                    actualizarGaleria();
+                    actualizarTotalFotos();
+                } else {
+                    alert('Error al eliminar');
+                }
+            }
+        }
+
+<<<<<<< HEAD
+        // Abrir modal
+        function abrirModalDesdeElemento(imgElement, vehiculo, imagen) {
+            // Buscar todas las fotos del folder actual
+=======
+        // Abrir modal con navegación
+        function abrirModalDesdeElemento(imgElement, vehiculo, imagen) {
+            // Obtener todas las imágenes del mismo vehículo
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            const fotosGrid = imgElement.closest('.fotos-grid');
+            const fotosItems = fotosGrid.querySelectorAll('.foto-item');
+            
+            imagenesActuales = Array.from(fotosItems).map(item => ({
+                ruta: item.dataset.ruta,
+                vehiculo: item.dataset.vehiculo,
+                imagen: item.dataset.imagen
+            }));
+            
+            indiceActual = imagenesActuales.findIndex(i => i.imagen === imagen);
+            vehiculoActual = vehiculo;
+            
+            const modal = document.getElementById('modal');
+<<<<<<< HEAD
+            modal.classList.add('active');
+            actualizarModalImagen();
+            
+            // Evitar scroll del body
+            document.body.style.overflow = 'hidden';
+=======
+            const modalImg = document.getElementById('modalImg');
+            const modalInfo = document.getElementById('modalInfo');
+            
+            modal.classList.add('active');
+            actualizarModalImagen();
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        function actualizarModalImagen() {
+            const modalImg = document.getElementById('modalImg');
+            const modalInfo = document.getElementById('modalInfo');
+            const actual = imagenesActuales[indiceActual];
+            
+            modalImg.src = `/imagen/${actual.ruta}`;
+            modalInfo.innerHTML = `
+                📷 ${actual.imagen} | 
+                📁 ${actual.vehiculo} | 
+                📸 ${indiceActual + 1} de ${imagenesActuales.length}
+<<<<<<< HEAD
+                <button class="btn" style="margin-left:10px; background:#667eea;" onclick="toggleFavoritoModal()">⭐ Favorito</button>
+=======
+                <button class="btn" style="margin-left:10px" onclick="toggleFavoritoModal()">⭐</button>
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+            `;
+        }
+
+        function navegarImagen(direccion) {
+            indiceActual = (indiceActual + direccion + imagenesActuales.length) % imagenesActuales.length;
+            actualizarModalImagen();
+        }
+
+        async function toggleFavoritoModal() {
+            const actual = imagenesActuales[indiceActual];
+            const ruta = actual.ruta;
+            const response = await fetch('/api/favorito', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ruta: ruta})
+            });
+            const data = await response.json();
+            if (data.success) {
+                if (data.es_favorito) {
+                    favoritosData[ruta] = true;
+                } else {
+                    delete favoritosData[ruta];
+                }
+                actualizarGaleria();
+                actualizarModalImagen();
+            }
+        }
+
+<<<<<<< HEAD
+        // Cerrar modal con scroll a la imagen
+        function cerrarModalConScroll() {
+            const modal = document.getElementById('modal');
+            if (modal.classList.contains('active')) {
+                // Restaurar scroll del body
+                document.body.style.overflow = '';
+                
+                const imagenActual = imagenesActuales[indiceActual];
+                if (imagenActual) {
+                    modal.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        const elementoImagen = document.querySelector(`.foto-item[data-ruta="${imagenActual.ruta}"]`);
+                        if (elementoImagen) {
+                            const headerAltura = document.querySelector('.header').offsetHeight;
+                            const elementoRect = elementoImagen.getBoundingClientRect();
+                            const scrollTop = window.pageYOffset + elementoRect.top - headerAltura - 20;
+                            
+                            window.scrollTo({
+                                top: scrollTop,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Highlight
+                            elementoImagen.style.transition = 'box-shadow 0.3s';
+                            elementoImagen.style.boxShadow = '0 0 0 3px #667eea';
+                            setTimeout(() => {
+                                elementoImagen.style.boxShadow = '';
+                            }, 1000);
+                        }
+                    }, 50);
+                } else {
+                    modal.classList.remove('active');
+                }
+            }
+=======
+        function cerrarModal() {
+            document.getElementById('modal').classList.remove('active');
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        }
+
+        // Filtros
+        function mostrarFavoritos() {
+            window.mostrarSoloFavoritos = true;
+            actualizarGaleria();
+        }
+
+        function mostrarTodo() {
+            window.mostrarSoloFavoritos = false;
+            document.getElementById('searchInput').value = '';
+            actualizarGaleria();
+        }
+
+<<<<<<< HEAD
+=======
+        function cambiarVista() {
+            vistaActual = vistaActual === 'grid' ? 'list' : 'grid';
+            localStorage.setItem('galeriaVista', vistaActual);
+            actualizarGaleria();
+        }
+
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        function toggleDarkMode() {
+            modoOscuro = !modoOscuro;
+            localStorage.setItem('modoOscuro', modoOscuro);
+            document.body.classList.toggle('dark-mode', modoOscuro);
+        }
+
+<<<<<<< HEAD
+        // Eventos
+=======
+        // Búsqueda en tiempo real
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    window.mostrarSoloFavoritos = false;
+                    actualizarGaleria();
+                });
+            }
+        });
+
+<<<<<<< HEAD
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') cerrarModalConScroll();
+            if (e.key === 'ArrowLeft' && document.getElementById('modal').classList.contains('active')) navegarImagen(-1);
+            if (e.key === 'ArrowRight' && document.getElementById('modal').classList.contains('active')) navegarImagen(1);
+        });
+
+        // Header compacto al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.padding = '8px 20px';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.padding = '15px 20px';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+=======
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') cerrarModal();
+            if (e.key === 'ArrowLeft' && document.getElementById('modal').classList.contains('active')) navegarImagen(-1);
+            if (e.key === 'ArrowRight' && document.getElementById('modal').classList.contains('active')) navegarImagen(1);
+        });
+>>>>>>> 11cdbf4ae2c8766cfc4b801af3ab0fe5b9f28e7e
+    </script>
+</body>
+</html>
